@@ -12,3 +12,6 @@
 2025-04-30T06:56:56.007Z error: 500 - Cast to ObjectId failed for value "PROP12345" (type string) at path "_id" for model "Property" - POST -/auth/booking/create - ::1
 2025-04-30T07:13:16.932Z error: 500 - property not found - POST -/auth/booking/create - ::1
 2025-04-30T07:15:06.052Z error: 500 - property not found - POST -/auth/booking/create - ::1
+2025-04-30T08:18:36.786Z error: 500 - jwt expired - POST -/auth/booking/create - ::1
+2025-04-30T08:18:59.688Z error: 500 - user already exist - POST -/auth/api/register - ::1
+2025-04-30T08:20:35.844Z error: 500 - mongoose is not defined - POST -/auth/booking/create - ::1
