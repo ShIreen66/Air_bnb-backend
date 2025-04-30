@@ -1,0 +1,14 @@
+2025-04-28T04:28:45.954Z error: 500 - Unauthorized user! - GET -/auth/api/current-user - ::1
+2025-04-28T04:30:49.673Z error: 500 - Unauthorized user! - GET -/auth/api/current-user - ::1
+2025-04-28T04:31:40.376Z error: 500 - User unauthorized - POST -/auth/api/logout - ::1
+2025-04-28T07:36:52.189Z error: 500 - User validation failed: address: Path `address` is required. - POST -/auth/api/register - ::1
+2025-04-28T07:41:45.643Z error: 500 - Illegal arguments: number, string - POST -/auth/api/login - ::1
+2025-04-28T07:44:19.097Z error: 500 - Unauthorized user! - GET -/auth/api/current-user - ::1
+2025-04-28T09:23:41.516Z error: 500 - Unauthorized user! - GET -/auth/property/search - ::1
+2025-04-28T09:25:14.755Z error: 500 - Unauthorized user! - GET -/auth/property/search - ::1
+2025-04-28T10:06:03.037Z error: 500 - Unauthorized user! - POST -/auth/booking/create - ::1
+2025-04-28T10:13:13.780Z error: 500 - Cast to ObjectId failed for value "PROP12345" (type string) at path "_id" for model "Property" - POST -/auth/booking/create - ::1
+2025-04-30T06:56:40.109Z error: 500 - Unauthorized user! - POST -/auth/booking/create - ::1
+2025-04-30T06:56:56.007Z error: 500 - Cast to ObjectId failed for value "PROP12345" (type string) at path "_id" for model "Property" - POST -/auth/booking/create - ::1
+2025-04-30T07:13:16.932Z error: 500 - property not found - POST -/auth/booking/create - ::1
+2025-04-30T07:15:06.052Z error: 500 - property not found - POST -/auth/booking/create - ::1
