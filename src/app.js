@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const errorHandler = require('./middlewares/errorHandler.js')
 const propertyRoutes = require('./routes/propertyRoutes/property.routes.js')
 const bookingRoutes = require("./routes/bookingRoutes/booking.routes.js")
+const paymentRoutes = require('./routes/paymentRoutes/payment.routes.js')
 
 
 const app = express()
@@ -17,6 +18,7 @@ app.use(morgan("tiny"))
 app.use('/auth/api', userRoutes)
 app.use('/auth/property', propertyRoutes)
 app.use('/auth/booking', bookingRoutes)
+app.use('/auth/payment', paymentRoutes)
 
 app.get('/', (req, res) => {
     res.send("Hello from Server")

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const Booking = require('../../models/bookingModels/booking.model.js');
 const Property = require('../../models/propertyModel/property.model.js');
-const paymentInstance = require('../../services/payment.services.js');
+// const paymentInstance = require('../../services/payment.services.js');
 const CustomError = require('../../utils/customError.js');
-const { sendMail } = require('../../utils/email.js')
-const { bookingConfirmationTemplate } = require('../../utils/emailTemplet.js')
+// const { sendMail } = require('../../utils/email.js')
+// const { bookingConfirmationTemplate } = require('../../utils/emailTemplet.js')
 
 module.exports.createBookingController = async (req, res, next) => {
     try {
@@ -33,29 +33,29 @@ module.exports.createBookingController = async (req, res, next) => {
             status: "Pending"
         });
 
-        const options = {
-            amount: totalPrice * 100,
-            currency: "INR",
-            receipt: `receipt ${booking._id}`,
-            payment_capture: 1
-        };
+        // const options = {
+        //     amount: totalPrice * 100,
+        //     currency: "INR",
+        //     receipt: `receipt ${booking._id}`,
+        //     payment_capture: 1
+        // };
 
-        const razorpayOrder = await paymentInstance.orders.create(options);
+        // const razorpayOrder = await paymentInstance.orders.create(options);
 
-        booking.razorpayOrderId = razorpayOrder.id;
-        await booking.save();
+        // booking.razorpayOrderId = razorpayOrder.id;
+        // await booking.save();
 
-        const bookingTemplate = bookingConfirmationTemplate(
-            req.user.userName,
-            property.location,
-            checkin_date,
-            checkout_date
-        )
+        // const bookingTemplate = bookingConfirmationTemplate(
+        //     req.user.userName,
+        //     property.location,
+        //     checkin_date,
+        //     checkout_date
+        // )
 
-        await sendMail("0606shiree@gmail.com",
-            "Booking confirmed",
-            bookingTemplate
-        )
+        // await sendMail(process.env.FROM_MAIL,
+        //     "Booking confirmed",
+        //     bookingTemplate
+        // )
         res.status(200).json({
             success: true,
             data: booking,
@@ -83,6 +83,31 @@ module.exports.viewBookingController = async (req, res, next) => {
             res.status(200).json({
                 message: "Bookings details",
                 data: bookings,
+            })
+    } catch (error) {
+        next(new CustomError(error.message, 500));
+    }
+}
+
+
+module.exports.cancleBookingController = async(req, res, next) => {
+    try {
+        const { id } = req.params
+        
+        if(!id) return next(new CustomError("Booking not found", 404))
+
+            const bookings = await Booking.findById(id)
+            if(!bookings) return next(new CustomError("Booking not found", 404))
+
+            if(bookings.user_id.toString() !==req.user._id.toString())
+                return next(new CustomError("Unauthorixed user", 401))
+
+            bookings.status = "Cancelled"
+            await bookings.save()
+
+            res.status(200).json({
+                success: true,
+                message: "Booking, cancelled"
             })
     } catch (error) {
         next(new CustomError(error.message, 500));

@@ -15,6 +15,21 @@ module.exports.bookingConfirmationTemplate = (
     </ul>
     <p>If you have any questions, feel free to reach out to our support team.</p>
     <p>We hope you have a great stay!</p>
-    
-    `
+`
 }
+
+module.exports.paymentConfirmationTemplate = (userName, location, status, amount) => {
+    return `
+         <h2>Hello ${userName},</h2>
+    <p>Your payment has been successfully processed</p>
+    <h3>Payment Details:</h3>
+    <ul>
+        <li><strong>Amount:</strong> property- ${amount}</li>
+        <li><strong>Property:</strong> ${location}</li>
+        <li><strong>Payment status:</strong> ${status}</li>
+    </ul>
+    <p>Thank you for choosing us!</p>
+    <p>We look forward to hosting you soon.</p>
+`
+}
+
