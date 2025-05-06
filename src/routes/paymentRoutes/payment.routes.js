@@ -9,6 +9,10 @@ router.post(
   paymentController.processPaymentController
 );
 
-router.post("/payment-verify", authMiddleware, paymentController.verifyPaymentController);
+router.post(
+  "/payment-verify",
+  authMiddleware,
+  paymentController.verifyPaymentController
+);
 
 module.exports = router;
